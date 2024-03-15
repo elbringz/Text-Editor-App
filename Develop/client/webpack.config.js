@@ -27,8 +27,8 @@ module.exports = () => {
         swDest: 'src-sw.js'
       }),
       new WebpackPwaManifest({
-        inject: true,
         fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E.',
         description: 'Takes notes with Javascript syntax highlighting!',
@@ -58,8 +58,8 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
               presets: ['@babel/preset.env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             },
           },
         },
