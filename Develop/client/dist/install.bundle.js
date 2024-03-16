@@ -1,0 +1,1 @@
+(()=>{const e=document.getElementById("buttonInstall");window.addEventListener("beforeinstallprompt",(d=>{window.deferredPrompt=d,e.classList.toggle("hidden",!1)})),e.addEventListener("click",(async()=>{const e=window.deferredPrompt;e&&(e.prompt(),window.deferredPrompt=null)})),window.addEventListener("appinstalled",(e=>{window.deferredPrompt=null}))})();

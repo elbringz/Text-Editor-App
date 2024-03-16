@@ -18,6 +18,7 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // adds html file to webpack
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Text Editor'
@@ -27,19 +28,20 @@ module.exports = () => {
         swDest: 'src-sw.js'
       }),
       new WebpackPwaManifest({
-        fingerprints: false,
-        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'J.A.T.E.',
         description: 'Takes notes with Javascript syntax highlighting!',
         theme_color: '#225ca3',
         background_color: '#225ca3',
-        start_url: '/',
-        publicPath: '/',
+        display: "standalone",
+        orientation: "portrait",
+        fingerprints: false,
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 256, 384, 512],
+            sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
         ],
@@ -52,16 +54,6 @@ module.exports = () => {
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
-        },
-        {
-          test: /\.m?js$/i,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset.env'],
-              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
-            },
-          },
         },
       ],
     },
